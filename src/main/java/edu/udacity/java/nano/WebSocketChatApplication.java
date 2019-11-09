@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.UnknownHostException;
+
 
 @SpringBootApplication
 @RestController
@@ -29,8 +29,14 @@ public class WebSocketChatApplication {
      * Chatroom Page
      */
     @GetMapping("/index")
-    public ModelAndView index(String username, HttpServletRequest request) throws UnknownHostException {
-        //TODO: add code for login to chatroom.
-        return null;
+    public ModelAndView index(String username, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("/chat");
+        if (username == null || username.equals("")) {
+            username = "NotAnUser";
+        }
+
+        modelAndView.addObject("username", username);
+        modelAndView.addObject("url", "ws://localhost:8080/chat/" + username);
+        return modelAndView;
     }
 }
