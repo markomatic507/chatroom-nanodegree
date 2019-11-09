@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 @SpringBootApplication
 @RestController
 public class WebSocketChatApplication {
@@ -36,7 +35,7 @@ public class WebSocketChatApplication {
         }
 
         modelAndView.addObject("username", username);
-        modelAndView.addObject("url", "ws://localhost:8080/chat/" + username);
+        modelAndView.addObject("url", "ws://localhost:8080/chat");
         return modelAndView;
     }
 }

@@ -73,14 +73,6 @@
             margin: 10px 13px;
         }
 
-        .us_uer {
-            width: 25px;
-            height: 25px;
-            background-position: -125px -34px;
-            position: absolute;
-            margin: 10px 13px;
-        }
-
         .text {
             width: 220px;
             height: 46px;
@@ -122,12 +114,6 @@
             color: #FFFFFF !important
         }
 
-        #password {
-            color: #FFFFFF !important;
-            position: absolute;
-            z-index: 100;
-        }
-
     </style>
 </head>
 <body>
@@ -150,9 +136,9 @@
      * Login
      */
     function login() {
-        var userName = $('username').val();
-        if (userName !== null && userName !== '') {
-            location.href = '/index?username' + userName;
+        var username = $('#username').val();
+        if (username != null && username !== "") {
+            location.href = '/index?username=' + username;
         }
     }
 
