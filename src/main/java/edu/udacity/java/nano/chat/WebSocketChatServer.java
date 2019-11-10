@@ -45,7 +45,7 @@ public class WebSocketChatServer {
     public void onOpen(Session session, @PathParam("username") String username) {
         onlineSessions.put(session.getId(), session);
         usernames.put(session.getId(), username);
-        sendMessageToAll(Message.Json(username, "Entered the chat", onlineSessions.size(), "ENTER"));
+        sendMessageToAll(Message.Json(username, "User entered the chat", onlineSessions.size(), "ENTER"));
     }
 
     /**
@@ -62,7 +62,7 @@ public class WebSocketChatServer {
      */
     @OnClose
     public void onClose(Session session) {
-        sendMessageToAll(Message.Json(usernames.get(session.getId()), "Left the chat", onlineSessions.size(), "LEAVE"));
+        sendMessageToAll(Message.Json(usernames.get(session.getId()), "User left the chat", onlineSessions.size(), "LEAVE"));
         usernames.remove(session.getId());
         onlineSessions.remove(session.getId());
     }
